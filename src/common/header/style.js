@@ -75,24 +75,46 @@ export const LangBox =  styled.p`
 export const SearchWarpper = styled.div`
   position: absolute;
   right: 0;
+  bottom: 15px;
   width: 194px;
-  border: none;
-  outline: none;
+  height: 40px;
+  box-sizing: border-box;
   font-size: 1em;
-  margin: 0;
-  padding: 0;
   backgounrd: transparnet;
-  border-radius: 0 0 4px 4px;
 `
 
-export const SearchInput = styled.input`
-
+export const SearchInput = styled.input.attrs({
+  placeholder: '请输入⋯⋯'
+})`
+  float: right;
+  font-size: 16px;
+  box-sizing: border-box;
+  width: 152px;
+  height: 40px;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0 11px;
+  background: #aaa;
+  border-radius: 4px 0 0 4px;
+  color: #fff;
+  &::placeholder {
+    color: #fff;
+  }
+  &:hover {
+    background: #2D2822;
+  }
 `
 
 export const SearchIcon = styled.div`
+float: right;
+  box-sizing: border-box;
   width: 42px;
   height: 40px;
+  line-height: 40px;
+  text-align: center;
   color: #fff;
+  border-radius: 0 4px 4px 0;
   background: #228f78;
   i {
     font-size: 28px;

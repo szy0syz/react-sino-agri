@@ -42,7 +42,7 @@ class Header extends PureComponent {
             <SearchIcon>
               <i className="iconfont">&#xe62d;</i>
             </SearchIcon>
-            <SearchInput></SearchInput>
+            <SearchInput onFocus={() => handleInputFocus(list)}></SearchInput>
           </SearchWarpper>
           {/* <SearchWarpper>
             <CSSTransition in={isFocused} timeout={330} classNames="slide">
