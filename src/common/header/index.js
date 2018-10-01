@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import {
   HeaderWrapper,
   Logo,
+  Box,
   Nav,
   NavItem,
   NavSearch,
@@ -16,65 +17,34 @@ import {
   SearchInfoList,
   SearchInfoTitle,
   SearchInfoSwitch,
-  SearchWarpper
+  LangBox,
+  SearchWarpper,
+  SearchIcon,
+  SearchInput
 } from "./style";
 
 class Header extends PureComponent {
-  getListArea = () => {
-    const { isFocused, isMouseIn, list, page, totalPage, handleChangePage, handleMouseEnter, handleMouseLeave } = this.props;
-    let jsList = list.toJS() || []
-    let pageList = []
-
-    if (jsList.length) {
-      for (let i = page * 10; i < (page + 1) * 10; i++) {
-        if (jsList[i]) {
-          pageList.push(
-            <SearchInfoItem key={jsList[i]}>{jsList[i]}</SearchInfoItem>
-          )
-        }
-      }
-    }
-
-    if (isFocused || isMouseIn) {
-      return (
-        <SearchInfo
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <SearchInfoTitle>
-            热门搜索
-            <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage, this.spinIcon)}>
-              <i ref={(icon) => { this.spinIcon = icon }} className="iconfont spin">&#xe851;</i>
-              换一批
-            </SearchInfoSwitch>
-          </SearchInfoTitle>
-          <SearchInfoList>{pageList}</SearchInfoList>
-        </SearchInfo>
-      );
-    } else {
-      return null;
-    }
-  };
-
   render() {
     const { isFocused, handleLogout, handleInputFocus, handleInputBlur, list, isLogined } = this.props;
     return (
       <HeaderWrapper>
-        <Link to='/'>
+        <Box>
           <Logo />
-        </Link>
-        <Nav>
-          <Link to='/'><NavItem className="left active">首页</NavItem></Link>
-          <NavItem className="left">下载App</NavItem>
-          {
-            isLogined ? 
-              <NavItem onClick={handleLogout} className="right">退出</NavItem> : 
-              <Link to='/login'><NavItem className="right">登录</NavItem></Link>
-          }
-          <NavItem className="right">
-            <i className="iconfont">&#xe636;</i>
-          </NavItem>
+          <Nav>
+            <NavItem className="left">首页</NavItem>
+            <NavItem className="left">走进中农</NavItem>
+            <NavItem className="left">新闻中心</NavItem>
+            <NavItem className="left">企业品牌</NavItem>
+            <NavItem className="left">加入中农</NavItem>
+            <NavItem className="left">联系我们</NavItem>
+          </Nav>
           <SearchWarpper>
+            <SearchIcon>
+              <i className="iconfont">&#xe62d;</i>
+            </SearchIcon>
+            <SearchInput></SearchInput>
+          </SearchWarpper>
+          {/* <SearchWarpper>
             <CSSTransition in={isFocused} timeout={330} classNames="slide">
               <NavSearch
                 className={isFocused ? "focused" : ""}
@@ -85,18 +55,13 @@ class Header extends PureComponent {
             <i className={isFocused ? "iconfont focused zoom" : "iconfont zoom"}>
               &#xe62d;
             </i>
-            {this.getListArea()}
-          </SearchWarpper>
-        </Nav>
-        <Addition>
-          <Link to='/write'>
-            <Button className="writting">
-              <i className="iconfont">&#xe96c;</i>
-              写文章
-            </Button>
-          </Link>
-          <Button className="reg">注册</Button>
-        </Addition>
+          </SearchWarpper> */}
+          <LangBox>
+            <a>中 \ </a>
+            <a>English</a>
+            <a> \ 旧</a>
+          </LangBox>
+        </Box>
       </HeaderWrapper>
     );
   }
