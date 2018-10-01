@@ -1,20 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { PureComponent, Fragment } from 'react';
+import { Provider } from 'react-redux'
+import { BrowserRouter, Route } from 'react-router-dom'
+import Home from './page/home'
+import Detail from './page/detail/loadbable'
+import Header from './common/header'
+import Footer from './common/footer'
+import store from './store'
 
-class App extends Component {
+class App extends PureComponent {
   render() {
+    // 这里表示 Provider 里的所有组件都有能力使用Store数据
+    // 或者：Provider 把 store 这些数据都提供给了它内部的这些组件
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <Provider store={store}>
+        <BrowserRouter>
+          <Fragment>
+            <Header />
+            <Route path='/' exact component={Home}></Route>
+            <Route path='/detail/:id' exact component={Detail}></Route>
+            <Footer></Footer>
+          </Fragment>
+        </BrowserRouter>
+      </Provider>
+    )
   }
 }
 
