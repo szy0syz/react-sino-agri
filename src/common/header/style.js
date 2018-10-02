@@ -75,7 +75,7 @@ export const LangBox =  styled.p`
 export const SearchWarpper = styled.div`
   position: absolute;
   right: 0;
-  bottom: 15px;
+  bottom: 20px;
   width: 194px;
   height: 40px;
   box-sizing: border-box;
