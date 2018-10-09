@@ -2,14 +2,15 @@ import React, { Component, Fragment } from 'react'
 import { actionCreators } from './store/index'
 import { connect } from 'react-redux'
 import Swiper from './components/swiper'
-import { HomeWrapper, } from './styled'
+import Boradcast from './components/broadcast'
+import { HomeWrapper } from './styled'
 
 class Home extends Component {
   render() {
     return(
       <Fragment>
         <Swiper></Swiper>
-        <HomeWrapper></HomeWrapper>
+        <Boradcast></Boradcast>
       </Fragment>
     ) 
   }
